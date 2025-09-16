@@ -19,7 +19,7 @@ const routes = [
   {
     path: '/movie', // if the url is http://localhost:8080/#/movie
     name: 'Movie Details',
-    component: loadPage('AboutPage') // load this page into RouterView Component
+    component: loadPage('MovieDetailsPage') // load this page into RouterView Component
   },
   {
     path: '/account',
