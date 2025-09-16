@@ -4,7 +4,7 @@
 import { Movie } from '@/models/Movie.js';
 
 // NOTE props allows a parent component (HomePage) to pass values to a child component (MovieCard)
-// REVIEW props are essentially parameters
+// REVIEW props are essentially parameters for our components
 defineProps({
   movieProp: { type: Movie, required: true },
   // coolName: { type: String }
