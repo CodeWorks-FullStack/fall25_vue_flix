@@ -1,5 +1,6 @@
 <script setup>
 import { AppState } from '@/AppState.js';
+import MovieCard from '@/components/MovieCard.vue';
 import { moviesService } from '@/services/MoviesService.js';
 import { logger } from '@/utils/Logger.js';
 import { Pop } from '@/utils/Pop.js';
@@ -36,8 +37,13 @@ async function discoverMovies() {
       <div class="col-12">
         <h1>Movies</h1>
       </div>
-      <div class="col-12">
-        {{ movies }}
+    </div>
+    <div class="row">
+      <!-- NOTE pick a unique value from the data you are accessing for the key -->
+      <div v-for="movie in movies" :key="movie.id" class="col-md-3">
+        <!-- <MovieCard :movieProp="{ title: 'Die Hard' }" /> -->
+        <!-- NOTE movie becomes the argument for the movieProp -->
+        <MovieCard :movieProp="movie" />
       </div>
     </div>
   </section>
