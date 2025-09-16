@@ -18,8 +18,8 @@ const routes = [
   },
   {
     // NOTE : colon denotes a route parameter
-    path: '/movie/:movieId', // if the url is http://localhost:8080/#/movie
-    name: 'Movie Details', // used in router links
+    path: '/movie/:movieId', // if the url is http://localhost:8080/#/movie/1033031
+    name: 'Movie Details', // used for router links
     component: loadPage('MovieDetailsPage') // load this page into RouterView Component
   },
   {

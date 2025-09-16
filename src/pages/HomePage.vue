@@ -21,6 +21,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   logger.log('Home page is unmounted!')
+  moviesService.clearSearchTerm()
 })
 
 async function discoverMovies() {
@@ -64,13 +65,14 @@ function clearSearchTerm() {
     <div class="row">
       <!-- NOTE pick a unique value from the data you are accessing for the key -->
       <div v-for="movie in movies" :key="movie.id" class="col-md-3 mb-3">
-        <!-- <MovieCard :movieProp="{ title: 'Die Hard' }" /> -->
+        <!-- NOTE assigning value of movieProp in our MovieCard to the movie variable genereated by the v-for -->
         <!-- NOTE movie becomes the argument for the movieProp -->
         <MovieCard :movieProp="movie" />
       </div>
     </div>
     <div class="row">
       <div class="col-12">
+        <!-- NOTE components are reusable! -->
         <PageNavigator />
       </div>
     </div>

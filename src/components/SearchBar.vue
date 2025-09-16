@@ -4,7 +4,7 @@ import { logger } from '@/utils/Logger.js';
 import { Pop } from '@/utils/Pop.js';
 import { ref } from 'vue';
 
-// NOTE refs can be instantiated with primitives
+// NOTE refs can be instantiated with primitives, reactives can only be instantiated with reference types (arrays and objects)
 const editableSearchTerm = ref('')
 
 async function searchMovies() {

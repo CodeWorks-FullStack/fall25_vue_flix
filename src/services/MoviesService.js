@@ -26,7 +26,6 @@ class MoviesService {
     // logger.log('movies!', movies)
     this.handleMoviesResponse(response)
   }
-
   async changeDiscoverPage(pageNumber) {
     const response = await movieApi.get(`discover/movie?page=${pageNumber}`)
     logger.log('GOT DIFFERENT PAGE OF MOVIES 📖🎥🎞️🍿', response.data)

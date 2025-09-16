@@ -3,7 +3,7 @@
 <script setup>
 import { Movie } from '@/models/Movie.js';
 
-// NOTE props allows a parent component (HomePage) to pass values to a child component (MovieCard)
+// NOTE props allow a parent component (HomePage) to pass values to a child component (MovieCard)
 // REVIEW props are essentially parameters for our components
 defineProps({
   movieProp: { type: Movie, required: true },
@@ -14,6 +14,7 @@ defineProps({
 
 <template>
   <!-- REVIEW CODE SMALL TEST SMALL WITH ROUTER LINKS -->
+  <!-- NOTE the 'to' prop for a router-link should be an object that is formatted to specify where this router link navigates to (name) and any parameters that are required for the route (params). The name of your param is defined in the router: ('movie/:movieId') -->
   <RouterLink :to="{ name: 'Movie Details', params: { movieId: movieProp.id } }">
     <div>
       <img :src="movieProp.posterImgUrl" :alt="`Movie poster for ${movieProp.title}`"
