@@ -20,6 +20,8 @@ const movieApi = axios.create({
 
 class MoviesService {
 
+
+
   async discoverMovies() {
     const response = await movieApi.get('discover/movie')
     logger.log('GOT MOVIES 🎥🎞️🍿', response.data)
@@ -33,12 +35,27 @@ class MoviesService {
     // logger.log('movies!', movies)
     this.handleMoviesResponse(response)
   }
+  async searchMovies(searchTerm) {
+    const response = await movieApi.get(`search/movie?query=${searchTerm}`)
+    logger.log('SEARCHED MOVIES 🔍🎥🎞️🍿', response.data)
+    this.handleMoviesResponse(response)
+    AppState.searchTerm = searchTerm
+  }
 
+  async changeSearchPage(pageNumber, searchTerm) {
+    const response = await movieApi.get(`search/movie?query=${searchTerm}&page=${pageNumber}`)
+    logger.log('GOT DIFFERENT PAGE OF MOVIES 🔍📖🎥🎞️🍿', response.data)
+    this.handleMoviesResponse(response)
+  }
   handleMoviesResponse(response) {
     const movies = response.data.results.map(pojo => new Movie(pojo))
     AppState.movies = movies
     AppState.currentPage = response.data.page
     AppState.totalPages = response.data.total_pages > 500 ? 500 : response.data.total_pages
+  }
+
+  clearSearchTerm() {
+    AppState.searchTerm = ''
   }
 }
 

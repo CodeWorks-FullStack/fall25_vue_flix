@@ -17,6 +17,11 @@ const routes = [
     component: loadPage('AboutPage')
   },
   {
+    path: '/movie', // if the url is http://localhost:8080/#/movie
+    name: 'Movie Details',
+    component: loadPage('AboutPage') // load this page into RouterView Component
+  },
+  {
     path: '/account',
     name: 'Account',
     component: loadPage('AccountPage'),
