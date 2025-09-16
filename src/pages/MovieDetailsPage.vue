@@ -18,7 +18,7 @@ onMounted(() => {
 async function getMovieById() {
   try {
     const movieId = route.params.movieId
-    logger.log('Getting my by id!', movieId);
+    logger.log('Getting movie by id!', movieId);
     await moviesService.getMovieById(movieId)
   } catch (error) {
     Pop.error(error)
@@ -35,11 +35,11 @@ async function getMovieById() {
       <div class="col-12">
         <h1>{{ movie.title }}</h1>
         <p>{{ movie.overview }}</p>
-        <img :src="movie.posterImgUrlHD" alt="" class="img-fluid w-100">
+        <img :src="movie.posterImgUrlHD" :alt="'Poster for ' + movie.title" class="img-fluid w-100">
       </div>
     </div>
   </div>
-  <div v-else class="container">
+  <div class="container">
     <div class="row">
       <div class="col-12">
         <h1>Loading...</h1>
