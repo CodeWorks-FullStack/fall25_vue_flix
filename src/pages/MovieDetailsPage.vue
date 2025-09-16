@@ -39,7 +39,7 @@ async function getMovieById() {
       </div>
     </div>
   </div>
-  <div class="container">
+  <div v-else class="container">
     <div class="row">
       <div class="col-12">
         <h1>Loading...</h1>
