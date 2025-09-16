@@ -1,8 +1,12 @@
 <script setup>
+import { AppState } from '@/AppState.js';
 import { moviesService } from '@/services/MoviesService.js';
 import { logger } from '@/utils/Logger.js';
 import { Pop } from '@/utils/Pop.js';
-import { onMounted, onUnmounted } from 'vue';
+import { computed, onMounted, onUnmounted } from 'vue';
+
+// NOTE computed returns a watchable object, and vue will re-render any HTML that uses the computed when it changes
+const movies = computed(() => AppState.movies)
 
 // NOTE lifecycle hook
 onMounted(() => {
@@ -27,7 +31,16 @@ async function discoverMovies() {
 </script>
 
 <template>
-  movies
+  <section class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>Movies</h1>
+      </div>
+      <div class="col-12">
+        {{ movies }}
+      </div>
+    </div>
+  </section>
 </template>
 
 <style scoped lang="scss"></style>
