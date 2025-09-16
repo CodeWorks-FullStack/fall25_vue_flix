@@ -1,9 +1,12 @@
 <script setup>
+import { AppState } from '@/AppState.js';
 import { moviesService } from '@/services/MoviesService.js';
 import { logger } from '@/utils/Logger.js';
 import { Pop } from '@/utils/Pop.js';
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
+
+const movie = computed(() => AppState.activeMovie)
 
 // NOTE current route information
 const route = useRoute()
@@ -26,7 +29,23 @@ async function getMovieById() {
 
 
 <template>
-  <h1>Movie Details</h1>
+  <!-- NOTE only render this HTML if there is a movie in the appstate! -->
+  <div v-if="movie" class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>{{ movie.title }}</h1>
+        <p>{{ movie.overview }}</p>
+        <img :src="movie.posterImgUrlHD" alt="" class="img-fluid w-100">
+      </div>
+    </div>
+  </div>
+  <div v-else class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>Loading...</h1>
+      </div>
+    </div>
+  </div>
 </template>
 
 
