@@ -10,6 +10,8 @@ export const AppState = reactive({
   movies: [],
   currentPage: 0,
   totalPages: 0,
-  searchTerm: ''
+  searchTerm: '',
+  /** @type {import('./models/Movie.js').Movie} movie from movieDB*/
+  activeMovie: null
 })
 

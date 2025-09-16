@@ -20,8 +20,6 @@ const movieApi = axios.create({
 
 class MoviesService {
 
-
-
   async discoverMovies() {
     const response = await movieApi.get('discover/movie')
     logger.log('GOT MOVIES 🎥🎞️🍿', response.data)
@@ -47,6 +45,14 @@ class MoviesService {
     logger.log('GOT DIFFERENT PAGE OF MOVIES 🔍📖🎥🎞️🍿', response.data)
     this.handleMoviesResponse(response)
   }
+
+  async getMovieById(movieId) {
+    const response = await movieApi.get(`movie/${movieId}`)
+    logger.log('GOT MOVIE BY ID', response.data)
+    const movie = new Movie(response.data)
+    AppState.activeMovie = movie
+  }
+
   handleMoviesResponse(response) {
     const movies = response.data.results.map(pojo => new Movie(pojo))
     AppState.movies = movies

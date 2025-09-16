@@ -13,15 +13,28 @@ defineProps({
 
 
 <template>
-  <div>
-    <img :src="movieProp.posterImgUrl" :alt="`Movie poster for ${movieProp.title}`" class="img-fluid rounded shadow-lg">
-    <b class="d-block">{{ movieProp.title }}</b>
-    <time :datetime="movieProp.releaseDate.toLocaleDateString()"
-      :title="`${movieProp.title} releases on ${movieProp.releaseDate.toLocaleDateString()}`">
-      {{ movieProp.releaseDate.toLocaleDateString() }}
-    </time>
-  </div>
+  <!-- REVIEW CODE SMALL TEST SMALL WITH ROUTER LINKS -->
+  <RouterLink :to="{ name: 'Movie Details', params: { movieId: movieProp.id } }">
+    <div>
+      <img :src="movieProp.posterImgUrl" :alt="`Movie poster for ${movieProp.title}`"
+        class="img-fluid rounded shadow-lg">
+      <b class="d-block">{{ movieProp.title }}</b>
+      <time :datetime="movieProp.releaseDate.toLocaleDateString()"
+        :title="`${movieProp.title} releases on ${movieProp.releaseDate.toLocaleDateString()}`">
+        {{ movieProp.releaseDate.toLocaleDateString() }}
+      </time>
+    </div>
+  </RouterLink>
 </template>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+</style>
